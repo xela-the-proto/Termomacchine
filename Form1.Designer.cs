@@ -44,24 +44,24 @@ namespace Termomacchine
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 15);
+            this.label1.Size = new System.Drawing.Size(275, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "clicca il bottone per incominciare il caricamento";
+            this.label1.Text = "Clicca il bottone per creare il file di  una commessa";
             // 
             // btn_inserisci
             // 
-            this.btn_inserisci.Location = new System.Drawing.Point(12, 27);
+            this.btn_inserisci.Location = new System.Drawing.Point(106, 27);
             this.btn_inserisci.Name = "btn_inserisci";
             this.btn_inserisci.Size = new System.Drawing.Size(75, 23);
             this.btn_inserisci.TabIndex = 2;
-            this.btn_inserisci.Text = "Inseirsci";
+            this.btn_inserisci.Text = "Crea";
             this.btn_inserisci.UseVisualStyleBackColor = true;
             this.btn_inserisci.Click += new System.EventHandler(this.btn_inserisci_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 57);
+            this.label2.Location = new System.Drawing.Point(21, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(249, 15);
             this.label2.TabIndex = 3;
@@ -69,7 +69,7 @@ namespace Termomacchine
             // 
             // btn_apertura
             // 
-            this.btn_apertura.Location = new System.Drawing.Point(12, 75);
+            this.btn_apertura.Location = new System.Drawing.Point(106, 74);
             this.btn_apertura.Name = "btn_apertura";
             this.btn_apertura.Size = new System.Drawing.Size(75, 23);
             this.btn_apertura.TabIndex = 4;
@@ -85,12 +85,14 @@ namespace Termomacchine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 109);
+            this.ClientSize = new System.Drawing.Size(291, 109);
             this.Controls.Add(this.btn_apertura);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_inserisci);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Creazione file macchina";

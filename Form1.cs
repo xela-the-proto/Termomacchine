@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -37,7 +36,7 @@ namespace Termomacchine
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -46,7 +45,12 @@ namespace Termomacchine
         {
             Stream stream;
             string vero = "si";
-            i = Int32.Parse(Interaction.InputBox("inserire il numero di macchine da mettere in lista", "input indice"));
+            i = 1;
+            if (i > 1)
+            {
+                Interaction.MsgBox("Massimo di macchine ad ogni aggiunta = 1", MsgBoxStyle.Critical, "Errore");
+                i = 1;
+            }
             Macchina[] macchina = new Macchina[i];
             int f;
             f = 0;
@@ -119,6 +123,7 @@ namespace Termomacchine
                 {
                     save_file.Filter = "XML file|*.xml";
                     save_file.Title = "Save as XML";
+                    save_file.FileName = "macchina";
                     if (save_file.ShowDialog() == DialogResult.OK)
                     {
                         for (int x = 0; x < j + 1; x++)
@@ -159,13 +164,16 @@ namespace Termomacchine
 
             Form2 form2 = new Form2();
 
+            Browser_dialog.AutoUpgradeEnabled = true;
+            Browser_dialog.ShowNewFolderButton = true;
             Browser_dialog.ShowDialog();
+
 
             var nApertura = Interaction.InputBox("inserire il numero di matricola da aprire", "Apertura");
 
             if (File.Exists(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml"))
             {
-                
+
                 form2.Show();
                 XmlTextReader xmlReader = new XmlTextReader(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml");
                 while (xmlReader.Read())
@@ -186,12 +194,12 @@ namespace Termomacchine
             }
             else
             {
-                Interaction.MsgBox("File insesistente", MsgBoxStyle.Critical,"Errore");
-                Interaction.Beep(); 
+                Interaction.MsgBox("File insesistente", MsgBoxStyle.Critical, "Errore");
+                Interaction.Beep();
             }
 
 
-            
+
 
 
             /*
