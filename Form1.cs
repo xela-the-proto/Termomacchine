@@ -63,9 +63,9 @@ namespace Termomacchine
                     codiceInterno, voltaggio, ampere, omron, scheneider, siemens);
 
                 input.NumCommessa = Int32.Parse(Interaction.InputBox("inserire il numero della commessa (solo numeri interi)", "input " + Convert.ToString(j + 1)));
-                input.NumSeriale = Interaction.InputBox("inserire il numero di serie (numeri interi e caratteri alfabetici", "input" + Convert.ToString(j + 1));
+                input.NumSeriale = Interaction.InputBox("inserire il numero di serie (numeri interi e caratteri alfabetici)", "input" + Convert.ToString(j + 1));
                 input.Prezzo = Int32.Parse(Interaction.InputBox("inserire il prezzo (solo numeri interi)", "input" + Convert.ToString(j + 1)));
-                input.NumPlc = Int32.Parse(Interaction.InputBox("inserire il numero di plkc richiesti (solo numeri interi)", "input" + Convert.ToString(j + 1)));
+                input.NumPlc = Int32.Parse(Interaction.InputBox("inserire il numero di plc richiesti (solo numeri interi)", "input" + Convert.ToString(j + 1)));
                 input.NumIngressi = Int32.Parse(Interaction.InputBox("inserire il numero di ingressi (solo numeri interi)", "input" + Convert.ToString(j + 1)));
                 input.NumUscite = Int32.Parse(Interaction.InputBox("inserire il numero di uscite (solo numeri interi)", "input" + Convert.ToString(j + 1)));
                 input.NumMotori = Int32.Parse(Interaction.InputBox("inserire il numero di motori richiesti (solo numeri interi)", "input" + Convert.ToString(j + 1)));
@@ -119,7 +119,9 @@ namespace Termomacchine
                     continuare = false;
                 }
 
-                if (continuare == false)
+                
+
+            if (continuare == false)
                 {
                     save_file.Filter = "XML file|*.xml";
                     save_file.Title = "Save as XML";
@@ -128,10 +130,16 @@ namespace Termomacchine
                     {
                         for (int x = 0; x < j + 1; x++)
                         {
-                            SaveViaDataContractSerialization(macchina[x],
-                                save_file.FileName.Insert(save_file.FileName.Length - 4, " N° " + macchina[x].NumCommessa));
-
+                            var path_final = save_file.FileName.Insert(save_file.FileName.Length - 4, " N° " + macchina[x].NumCommessa);
+                            if (File.Exists(path_final))
+                            {
+                                Interaction.MsgBox("Commessa già presente", MsgBoxStyle.Critical, "Errore");
+                                Interaction.Beep();
+                                break;
+                            }
+                            SaveViaDataContractSerialization(macchina[x], path_final);
                         }
+
                     }
 
                     break;
@@ -169,7 +177,7 @@ namespace Termomacchine
             Browser_dialog.ShowDialog();
 
 
-            var nApertura = Interaction.InputBox("inserire il numero di matricola da aprire", "Apertura");
+            var nApertura = Interaction.InputBox("inserire il numero di commessa da aprire", "Apertura");
 
             if (File.Exists(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml"))
             {
