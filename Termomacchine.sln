@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Termomacchine", "Termomacchine.csproj", "{D5CF6F5F-71C6-4986-9A55-1D581452EB19}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "setup_termo", "..\setup_termo\setup_termo.vdproj", "{5BA74A23-25D0-437C-AD05-37829B7DFFAC}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "termo_setup", "..\termo_setup\termo_setup.vdproj", "{13B4F01C-26DF-4CA8-850A-4146B7D3AFCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{D5CF6F5F-71C6-4986-9A55-1D581452EB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CF6F5F-71C6-4986-9A55-1D581452EB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CF6F5F-71C6-4986-9A55-1D581452EB19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BA74A23-25D0-437C-AD05-37829B7DFFAC}.Debug|Any CPU.ActiveCfg = Debug
-		{5BA74A23-25D0-437C-AD05-37829B7DFFAC}.Release|Any CPU.ActiveCfg = Release
+		{13B4F01C-26DF-4CA8-850A-4146B7D3AFCC}.Debug|Any CPU.ActiveCfg = Debug
+		{13B4F01C-26DF-4CA8-850A-4146B7D3AFCC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
