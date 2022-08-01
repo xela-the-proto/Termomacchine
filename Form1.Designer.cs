@@ -33,6 +33,9 @@ namespace Termomacchine
             this.label1 = new System.Windows.Forms.Label();
             this.btn_inserisci = new System.Windows.Forms.Button();
             this.save_file = new System.Windows.Forms.SaveFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_apertura = new System.Windows.Forms.Button();
+            this.open_file = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -46,7 +49,7 @@ namespace Termomacchine
             // 
             // btn_inserisci
             // 
-            this.btn_inserisci.Location = new System.Drawing.Point(95, 27);
+            this.btn_inserisci.Location = new System.Drawing.Point(12, 27);
             this.btn_inserisci.Name = "btn_inserisci";
             this.btn_inserisci.Size = new System.Drawing.Size(75, 23);
             this.btn_inserisci.TabIndex = 2;
@@ -54,11 +57,36 @@ namespace Termomacchine
             this.btn_inserisci.UseVisualStyleBackColor = true;
             this.btn_inserisci.Click += new System.EventHandler(this.btn_inserisci_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(249, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Altrimenti clicca qui per aprire una commessa";
+            // 
+            // btn_apertura
+            // 
+            this.btn_apertura.Location = new System.Drawing.Point(12, 75);
+            this.btn_apertura.Name = "btn_apertura";
+            this.btn_apertura.Size = new System.Drawing.Size(75, 23);
+            this.btn_apertura.TabIndex = 4;
+            this.btn_apertura.Text = "Apri";
+            this.btn_apertura.UseVisualStyleBackColor = true;
+            this.btn_apertura.Click += new System.EventHandler(this.btn_apertura_Click);
+            // 
+            // open_file
+            // 
+            this.open_file.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 60);
+            this.ClientSize = new System.Drawing.Size(282, 109);
+            this.Controls.Add(this.btn_apertura);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_inserisci);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -76,6 +104,9 @@ namespace Termomacchine
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_inserisci;
         private System.Windows.Forms.SaveFileDialog save_file;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_apertura;
+        private System.Windows.Forms.OpenFileDialog open_file;
     }
 }
 

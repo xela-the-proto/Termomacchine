@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace Termomacchine
 {
@@ -11,9 +6,9 @@ namespace Termomacchine
     public class Macchina
     {
         [DataMember]
-        private int numCom;
+        private int numCommessa;
         [DataMember]
-        private string numSer;
+        private string numSeriale;
         [DataMember]
         private int prezzo;
         [DataMember]
@@ -31,18 +26,18 @@ namespace Termomacchine
         [DataMember]
         private double ampere;
         [DataMember]
-        private bool omron;
+        private string omron;
         [DataMember]
-        private bool scheneider;
+        private string scheneider;
         [DataMember]
-        private bool siemens;
+        private string siemens;
 
-        public Macchina(int numCom, string numSer, int prezzo, int numPLC,
+        public Macchina(int NumCommessa, string NumSeriale, int prezzo, int numPLC,
             int numIngressi, int numUscite, int numMotori, string codiceInterno, double voltaggio,
-            double ampere, bool omron, bool scheneider, bool siemens)
+            double ampere, string omron, string scheneider, string siemens)
         {
-            this.numCom = numCom;
-            this.numSer = numSer;
+            this.numCommessa = NumCommessa;
+            this.numSeriale = NumSeriale;
             this.prezzo = prezzo;
             this.numPLC = numPLC;
             this.numIngressi = numIngressi;
@@ -56,18 +51,18 @@ namespace Termomacchine
             this.siemens = siemens;
         }
 
-        public Macchina(){}
+        public Macchina() { }
 
-        public int NumCom
+        public int NumCommessa
         {
-            get => numCom;
-            set => numCom = value;
+            get => numCommessa;
+            set => numCommessa = value;
         }
 
-        public string NumSer
+        public string NumSeriale
         {
-            get => numSer;
-            set => numSer = value;
+            get => numSeriale;
+            set => numSeriale = value;
         }
 
         public int Prezzo
@@ -118,19 +113,19 @@ namespace Termomacchine
             set => ampere = value;
         }
 
-        public bool Omron
+        public string Omron
         {
             get => omron;
             set => omron = value;
         }
 
-        public bool Scheneider
+        public string Scheneider
         {
             get => scheneider;
             set => scheneider = value;
         }
 
-        public bool Siemens
+        public string Siemens
         {
             get => siemens;
             set => siemens = value;
