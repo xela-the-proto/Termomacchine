@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-
 
 namespace Termomacchine
 {
@@ -32,12 +32,14 @@ namespace Termomacchine
         {
             InitializeComponent();
 
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
+
 
 
         private void btn_inserisci_Click(object sender, EventArgs e)
@@ -149,29 +151,47 @@ namespace Termomacchine
 
         private void btn_apertura_Click(object sender, EventArgs e)
         {
+            /*
             open_file.Filter = "XML file|*.xml";
             open_file.Title = "Open XML";
             open_file.ShowDialog();
+            */
 
             Form2 form2 = new Form2();
-            form2.Show();
 
-            XmlTextReader xmlReader = new XmlTextReader(open_file.FileName);
-            while (xmlReader.Read())
+            Browser_dialog.ShowDialog();
+
+            var nApertura = Interaction.InputBox("inserire il numero di matricola da aprire", "Apertura");
+
+            if (File.Exists(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml"))
             {
-                switch (xmlReader.NodeType)
+                
+                form2.Show();
+                XmlTextReader xmlReader = new XmlTextReader(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml");
+                while (xmlReader.Read())
                 {
-                    case XmlNodeType.Element:
-                        form2.UpdateListBox(xmlReader.Name);
-                        break;
-                    case XmlNodeType.Text:
-                        form2.UpdateListBox(xmlReader.Value);
-                        break;
-                    case XmlNodeType.EndElement:
-                        form2.UpdateListBox("");
-                        break;
+                    switch (xmlReader.NodeType)
+                    {
+                        case XmlNodeType.Element:
+                            form2.UpdateListBox(xmlReader.Name);
+                            break;
+                        case XmlNodeType.Text:
+                            form2.UpdateListBox(xmlReader.Value);
+                            break;
+                        case XmlNodeType.EndElement:
+                            form2.UpdateListBox("");
+                            break;
+                    }
                 }
             }
+            else
+            {
+                Interaction.MsgBox("File insesistente", MsgBoxStyle.Critical,"Errore");
+                Interaction.Beep(); 
+            }
+
+
+            
 
 
             /*

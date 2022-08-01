@@ -36,6 +36,7 @@ namespace Termomacchine
             this.label2 = new System.Windows.Forms.Label();
             this.btn_apertura = new System.Windows.Forms.Button();
             this.open_file = new System.Windows.Forms.OpenFileDialog();
+            this.Browser_dialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -107,6 +108,7 @@ namespace Termomacchine
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_apertura;
         private System.Windows.Forms.OpenFileDialog open_file;
+        private System.Windows.Forms.FolderBrowserDialog Browser_dialog;
     }
 }
 
