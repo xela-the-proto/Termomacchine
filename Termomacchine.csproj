@@ -3,7 +3,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="AnalysisReport.sarif" />
+    <None Remove="upgrade-assistant.clef" />
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="VBIDE">
       <WrapperTool>tlbimp</WrapperTool>
@@ -33,6 +38,5 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
-    <PackageReference Include="squirrel.windows" Version="2.0.1" />
   </ItemGroup>
 </Project>

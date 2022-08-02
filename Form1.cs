@@ -39,8 +39,6 @@ namespace Termomacchine
 
         }
 
-
-
         private void btn_inserisci_Click(object sender, EventArgs e)
         {
             Stream stream;
@@ -98,7 +96,7 @@ namespace Termomacchine
                 }
 
                 macchina[j] = input;
-
+                /*
                 if (j + 1 != i)
                 {
                     check = Interaction.MsgBox("Si vuole ocntinuare l'inseriemnto di dati pe rla prossima macchina",
@@ -118,10 +116,10 @@ namespace Termomacchine
                 {
                     continuare = false;
                 }
+                */
 
-                
 
-            if (continuare == false)
+                if (continuare == false)
                 {
                     save_file.Filter = "XML file|*.xml";
                     save_file.Title = "Save as XML";
@@ -130,14 +128,17 @@ namespace Termomacchine
                     {
                         for (int x = 0; x < j + 1; x++)
                         {
-                            var path_final = save_file.FileName.Insert(save_file.FileName.Length - 4, " N° " + macchina[x].NumCommessa);
+                            var path_final = save_file.FileName.Insert(save_file.FileName.Length - 4, " N.Seriale " + macchina[x].NumSeriale);
                             if (File.Exists(path_final))
                             {
                                 Interaction.MsgBox("Commessa già presente", MsgBoxStyle.Critical, "Errore");
                                 Interaction.Beep();
                                 break;
                             }
-                            SaveViaDataContractSerialization(macchina[x], path_final);
+                            if(SaveViaDataContractSerialization(macchina[x], path_final))
+                            {
+                                Interaction.MsgBox("Salvataggio effettuato con successo", MsgBoxStyle.Information, "Salvataggio");
+                            }
                         }
 
                     }
@@ -149,7 +150,7 @@ namespace Termomacchine
 
         }
 
-        void SaveViaDataContractSerialization<T>(T serializableObject, string filepath)
+        bool SaveViaDataContractSerialization<T>(T serializableObject, string filepath)
         {
             var serializer = new DataContractSerializer(typeof(T));
             var settings = new XmlWriterSettings()
@@ -160,6 +161,7 @@ namespace Termomacchine
             var writer = XmlWriter.Create(filepath, settings);
             serializer.WriteObject(writer, serializableObject);
             writer.Close();
+            return true;
         }
 
         private void btn_apertura_Click(object sender, EventArgs e)
@@ -179,11 +181,11 @@ namespace Termomacchine
 
             var nApertura = Interaction.InputBox("inserire il numero di commessa da aprire", "Apertura");
 
-            if (File.Exists(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml"))
+            if (File.Exists(Browser_dialog.SelectedPath + "\\macchina N.Seriale " + nApertura + ".xml"))
             {
 
                 form2.Show();
-                XmlTextReader xmlReader = new XmlTextReader(Browser_dialog.SelectedPath + "\\macchina N° " + nApertura + ".xml");
+                XmlTextReader xmlReader = new XmlTextReader(Browser_dialog.SelectedPath + "\\macchina N.Seriale " + nApertura + ".xml");
                 while (xmlReader.Read())
                 {
                     switch (xmlReader.NodeType)
