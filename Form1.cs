@@ -41,7 +41,6 @@ namespace Termomacchine
 
         private void btn_inserisci_Click(object sender, EventArgs e)
         {
-            Stream stream;
             string vero = "si";
             i = 1;
             if (i > 1)
@@ -50,9 +49,6 @@ namespace Termomacchine
                 i = 1;
             }
             Macchina[] macchina = new Macchina[i];
-            int f;
-            f = 0;
-            var check = MsgBoxResult.Cancel;
             bool continuare = false;
 
             for (int j = 0; j < i; j++)
@@ -172,7 +168,7 @@ namespace Termomacchine
             open_file.ShowDialog();
             */
 
-            Form2 form2 = new Form2();
+            Form2 form2 = new();
 
             Browser_dialog.AutoUpgradeEnabled = true;
             Browser_dialog.ShowNewFolderButton = true;
