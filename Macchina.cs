@@ -51,7 +51,22 @@ namespace Termomacchine
             this.siemens = siemens;
         }
 
-        public Macchina() { }
+        public Macchina()
+        {
+            numCommessa = 0;
+            numSeriale = "";
+            prezzo = 0;
+            numPLC = 0;
+            numIngressi = 0;
+            numUscite = 0;
+            numMotori = 0;
+            codiceInterno = "";
+            voltaggio = 0;
+            ampere = 0;
+            omron = "";
+            scheneider = "";
+            siemens = "";
+        }
 
         public int NumCommessa
         {
